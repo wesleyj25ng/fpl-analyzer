@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
+import AppHeader from "./components/AppHeader";
+import PlayerSearchPanel from "./components/PlayerSearchPanel";
 import TeamField from "./components/TeamField";
 import PlayerDetail from "./components/PlayerDetail";
-import PlayerCard from "./components/PlayerCard";
 import {
   fetchBootstrap,
   fetchEntry,
@@ -366,46 +367,14 @@ export default function App() {
       )}
 
       {teamName && (
-        <>
-          <div className="top-tabs">
-            <button
-              className={`tab-button ${
-                activeTab === "report" ? "is-active" : ""
-              }`.trim()}
-              type="button"
-              onClick={() => setActiveTab("report")}
-            >
-              Report
-            </button>
-            <span className="tab-separator">|</span>
-            <button
-              className={`tab-button ${
-                activeTab === "search" ? "is-active" : ""
-              }`.trim()}
-              type="button"
-              onClick={() => setActiveTab("search")}
-            >
-              Search
-            </button>
-          </div>
-
-          {activeTab === "report" && (
-            <div className="score-header">
-              <div className="score-title">Overall Score:</div>
-              <div className="score-box">{overallScore}/100</div>
-              <div className="score-meta">
-                {teamName}
-                {managerName ? ` · ${managerName}` : ""} · Gameweek {eventId ?? "X"}
-              </div>
-            </div>
-          )}
-
-          {activeTab === "search" && (
-            <div className="score-header">
-              <div className="score-title">Looking for a differential pick?</div>
-            </div>
-          )}
-        </>
+        <AppHeader
+          activeTab={activeTab}
+          onChangeTab={setActiveTab}
+          overallScore={overallScore}
+          teamName={teamName}
+          managerName={managerName}
+          eventId={eventId}
+        />
       )}
 
       {selectedPlayer && (
@@ -415,43 +384,12 @@ export default function App() {
       {error && teamName && <div className="error-text">{error}</div>}
 
       {teamName && activeTab === "search" && (
-        <section className="player-search-panel">
-          <div className="player-search-header">
-            <div className="player-search-title">Search Players</div>
-            <div className="player-search-copy">Find players outside your current squad.</div>
-          </div>
-          <input
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search any player"
-            className="player-search-input"
-          />
-          {searchTerm.trim() && (
-            <div className="player-search-results">
-              {searchablePlayers.length ? (
-                <div
-                  className="player-grid player-search-grid"
-                  style={{
-                    gridTemplateColumns:
-                      "repeat(auto-fit, minmax(var(--card-width), var(--card-width)))",
-                  }}
-                >
-                  {searchablePlayers.map((player) => (
-                    <PlayerCard
-                      key={player.id}
-                      player={player}
-                      displayPoints={player.rating ?? 0}
-                      mode="report"
-                      onSelect={() => handleSelectSearchedPlayer(player.id)}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <div className="player-search-empty">No matching non-squad players found.</div>
-              )}
-            </div>
-          )}
-        </section>
+        <PlayerSearchPanel
+          searchTerm={searchTerm}
+          onSearchChange={setSearchTerm}
+          players={searchablePlayers}
+          onSelectPlayer={handleSelectSearchedPlayer}
+        />
       )}
 
       {squad.length > 0 && activeTab !== "search" && (

@@ -87,6 +87,14 @@ export default function PlayerDetail({ player, onClose }) {
           <div className="detail-label">Nailedness</div>
           <div className="detail-value">{Math.round((player.nailedRate ?? 0) * 100)}%</div>
         </div>
+        {(player.position === "DEF" || player.position === "MID") && (
+          <div className="player-detail-card">
+            <div className="detail-label">DefCon Rate (Last 4 Played)</div>
+            <div className="detail-value">
+              {Math.round((player.ratingBreakdown?.defconRate ?? 0) * 100)}%
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="player-detail-section">

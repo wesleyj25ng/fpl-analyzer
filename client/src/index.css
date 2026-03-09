@@ -64,10 +64,15 @@ body {
 /* App Shell */
 .app {
   font-family: "Inter", system-ui, sans-serif;
+  width: 100%;
   padding: clamp(16px, 3vw, 32px);
   max-width: 1600px;
   margin: 0 auto;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  --shell-inset: clamp(24px, 6vw, 84px);
   --card-width: 130px;
   --card-height: 98px;
   --grid-gap: 16px;
@@ -78,7 +83,7 @@ body {
 .theme-toggle {
   position: absolute;
   top: 12px;
-  right: 12px;
+  right: var(--shell-inset);
   background: transparent;
   border: 1px solid var(--border);
   color: var(--text);
@@ -811,7 +816,7 @@ button:focus-visible {
 .back-button {
   position: absolute;
   top: 12px;
-  left: 12px;
+  left: var(--shell-inset);
   background: transparent;
   border: 1px solid var(--border);
   color: var(--text);

@@ -1,4 +1,4 @@
-// Lightweight average helper for recent form and minutes rates.
+// Helper function for recent form and minutes rates.
 function mean(values) {
   if (!values.length) return 0;
   return values.reduce((sum, value) => sum + value, 0) / values.length;
