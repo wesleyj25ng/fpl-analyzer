@@ -351,7 +351,7 @@ export default function App() {
           <input
             value={entryId}
             onChange={(e) => setEntryId(e.target.value)}
-            placeholder="e.g. 1234567"
+            placeholder="e.g. 3963259"
             className="entry-input"
           />
           <button

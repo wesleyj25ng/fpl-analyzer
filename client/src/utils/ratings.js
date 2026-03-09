@@ -1,6 +1,6 @@
 import { summarizePlayerHistory } from "./playerHistory";
 
-export const DEFAULT_RATING_WEIGHTS = {
+const DEFAULT_RATING_WEIGHTS = {
   quality: 0.28, // points per game
   value: 0.18, // points per million
   form: 0.15, // last 4 games
@@ -95,7 +95,6 @@ function buildRawRatedPlayer(player, metric, positionRanges, weights) {
     ...player,
     rating: Math.round(clamp(weighted) * 100),
     recentPoints: metric.recentPoints,
-    recentMinutes: metric.recentMinutes,
     recentChart: metric.recentChart,
     recentForm: metric.recentForm,
     fixtureAvg: metric.fixtures,
@@ -245,7 +244,7 @@ export function buildBaselineRatingRanges(
 }
 
 // Maps a numeric rating to a letter grade using fixed score bands.
-export function getRatingGrade(score) {
+function getRatingGrade(score) {
   if (score >= 100) return "S";
   if (score >= 95) return "A+";
   if (score >= 90) return "A";

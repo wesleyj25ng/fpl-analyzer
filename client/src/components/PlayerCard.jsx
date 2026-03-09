@@ -13,10 +13,8 @@ export default function PlayerCard({
     ? player.ratingGrade ?? (ratingValue === null ? "..." : `${ratingValue}`)
     : `${displayPoints} pts`;
   const playerLabel = `${player.name}${player.teamShortName ? ` (${player.teamShortName})` : ""}`;
-  const leftLabel = isReport ? player.fixtureLabel : `£${player.price}`;
-  const rightLabel = isReport
-    ? `xP ${(player.expectedPoints ?? 0).toFixed(1)}`
-    : `${player.selectedBy.toFixed(1)}%`;
+  const leftLabel = player.fixtureLabel;
+  const rightLabel = `xP ${(player.expectedPoints ?? 0).toFixed(1)}`;
   const fixtureClass = isReport ? `fixture-diff-${player.fixtureDifficulty}` : "";
 
   return (

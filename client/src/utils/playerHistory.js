@@ -85,7 +85,6 @@ export function summarizePlayerHistory(history, position, formCount = 4) {
   const recentGames = getPlayedHistory(history, formCount);
   const recentScheduledGames = getRecentHistory(history, formCount);
   const recentPoints = recentGames.map((game) => Number(game.total_points ?? 0));
-  const recentMinutes = recentGames.map((game) => Number(game.minutes ?? 0));
   const scheduledMinutes = recentScheduledGames.map((game) => Number(game.minutes ?? 0));
   const goals = recentGames.reduce(
     (sum, game) => sum + Number(game.goals_scored ?? 0),
@@ -109,7 +108,6 @@ export function summarizePlayerHistory(history, position, formCount = 4) {
 
   return {
     recentPoints,
-    recentMinutes,
     recentChart: buildRecentChart(history, position),
     recentForm: recentPoints.length ? mean(recentPoints) : 0,
     nailedRate: scheduledMinutes.length ? mean(scheduledMinutes) / 90 : 0,
