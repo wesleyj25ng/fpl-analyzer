@@ -9,7 +9,7 @@ export default function TeamField({
 }) {
   if (mode === "report") {
     return (
-      <div className="team-field report-mode" style={{ width: fieldOuterWidth }}>
+      <div className="team-field" style={{ width: fieldOuterWidth }}>
         <div className="positions">
           {["GKP", "DEF", "MID", "FWD"].map((pos) => {
             const starters = grouped[pos];
@@ -45,7 +45,7 @@ export default function TeamField({
                   getDisplayPoints={(player) =>
                     player.isCaptain ? player.points * player.multiplier : player.points
                   }
-                  mode="points"
+                  mode="squad"
                   onSelectPlayer={onSelectPlayer}
                 />
               );
@@ -63,7 +63,7 @@ export default function TeamField({
               .slice()
               .sort((a, b) => a.pickPosition - b.pickPosition)}
             getDisplayPoints={(player) => player.points}
-            mode="points"
+            mode="squad"
             onSelectPlayer={onSelectPlayer}
           />
         </>

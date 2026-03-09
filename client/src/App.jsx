@@ -100,7 +100,7 @@ export default function App() {
         );
         return name.includes(query);
       })
-      .slice(0, 8)
+      .slice(0, 12)
       .map((element) => buildCatalogPlayerFromElement(element, teamsById, fixtureLookup));
   }, [
     bootstrapData,
@@ -402,10 +402,7 @@ export default function App() {
 
           {activeTab === "search" && (
             <div className="score-header">
-              <div className="score-title">Search Players</div>
-              <div className="score-meta">
-                Find players outside your current squad.
-              </div>
+              <div className="score-title">Looking for a differential pick?</div>
             </div>
           )}
         </>

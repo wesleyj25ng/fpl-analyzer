@@ -3,13 +3,13 @@ import { getRatingClass } from "../utils/ratings";
 export default function PlayerCard({
   player,
   displayPoints,
-  mode = "points",
+  mode = "squad",
   onSelect,
 }) {
   const isReport = mode === "report";
   const ratingValue = player.rating ?? null;
   const ratingClass = isReport && ratingValue !== null ? getRatingClass(ratingValue) : "";
-  const pointsLabel = isReport
+  const scoreLabel = isReport
     ? player.ratingGrade ?? (ratingValue === null ? "..." : `${ratingValue}`)
     : `${displayPoints} pts`;
   const playerLabel = `${player.name}${player.teamShortName ? ` (${player.teamShortName})` : ""}`;
@@ -31,8 +31,8 @@ export default function PlayerCard({
           ) : null}
         </span>
       </div>
-      <div className={`player-row player-points-row ${ratingClass}`.trim()}>
-        {pointsLabel}
+      <div className={`player-row player-score-row ${ratingClass}`.trim()}>
+        {scoreLabel}
       </div>
       <div className="player-row player-bottom-row">
         <div className={`player-price ${fixtureClass}`.trim()}>{leftLabel}</div>

@@ -392,69 +392,69 @@ body {
   border-radius: 10px 10px 0 0;
 }
 
-.player-points-row {
+.player-score-row {
   background: #ffffff;
   color: #111111;
   font-weight: 600;
   text-align: center;
 }
 
-.player-points-row.rating-s {
+.player-score-row.rating-s {
   background: #052e16;
   color: #ffffff;
 }
 
-.player-points-row.rating-a-plus {
+.player-score-row.rating-a-plus {
   background: #0f5d2f;
   color: #ffffff;
 }
 
-.player-points-row.rating-a {
+.player-score-row.rating-a {
   background: #166534;
   color: #ffffff;
 }
 
-.player-points-row.rating-a-minus {
+.player-score-row.rating-a-minus {
   background: #15803d;
   color: #ffffff;
 }
 
-.player-points-row.rating-b-plus {
+.player-score-row.rating-b-plus {
   background: #4ade80;
   color: #052e16;
 }
 
-.player-points-row.rating-b {
+.player-score-row.rating-b {
   background: #86efac;
   color: #14532d;
 }
 
-.player-points-row.rating-b-minus {
+.player-score-row.rating-b-minus {
   background: #bef264;
   color: #365314;
 }
 
-.player-points-row.rating-c-plus {
+.player-score-row.rating-c-plus {
   background: #facc15;
   color: #422006;
 }
 
-.player-points-row.rating-c {
+.player-score-row.rating-c {
   background: #f59e0b;
   color: #451a03;
 }
 
-.player-points-row.rating-c-minus {
+.player-score-row.rating-c-minus {
   background: #fb923c;
   color: #431407;
 }
 
-.player-points-row.rating-d {
+.player-score-row.rating-d {
   background: #f97316;
   color: #ffffff;
 }
 
-.player-points-row.rating-f {
+.player-score-row.rating-f {
   background: #dc2626;
   color: #ffffff;
 }
